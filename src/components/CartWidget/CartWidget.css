@@ -1,0 +1,16 @@
+.carrito {
+    background-color: white;
+    color: black;
+    float: right;
+    margin-right: 100px;
+    padding: 11px 20px;
+    font-size: 30px;
+    border: 2px solid rgb(109, 109, 109) ;
+    border-radius: 14px;
+}
+
+.carito-img {
+    max-width: 30px;
+    margin-right: 10px;
+}
+
