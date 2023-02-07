@@ -1,9 +1,9 @@
 import './ItemListContainer.css'
-import { getProducts } from '../Products/Products'
-import { getProductsByCategoria } from '../Products/Products'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemList from '../ItemList/ItemList'
+import { getDocs, collection } from 'firebase/firestore'
+import { db } from '../../service/firebase/firebaseConfig'
 
 const ItemListContainer = ({greeting}) => {
    
@@ -12,15 +12,27 @@ const ItemListContainer = ({greeting}) => {
     const {categoriaId} = useParams()
 
     useEffect(() => {
-        const asyncFuntion = categoriaId ? getProductsByCategoria : getProducts
+        (async () =>{
+            setLoading(true)
+        
+            const productsRef = collection(db, 'products')
+       
+            try{
+                const snapshot = await getDocs(productsRef)
+                const productsAdapted = snapshot.docs.map(doc =>{
+                    const fields = doc.data()
 
-        asyncFuntion(categoriaId).then(products => {
-            setProducts(products)
-        }).catch(error => {
-            console.log(error)
-        }).finally(() => {
-            setLoading(false)
-        })  
+                    return {id: doc.id, ...fields}
+                })
+
+                setProducts(productsAdapted)
+
+            }catch(error){
+                console.log(error)
+            } finally {
+                setLoading(false)
+            }
+    })() 
     }, [categoriaId])
    
     if(loading) {
