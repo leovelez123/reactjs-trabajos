@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { CartContext } from "../Context/CartContext"
 import CartList from "../CartList/CartList"
+import { Link } from "react-router-dom"
 
 const Cart = () => {
 
@@ -8,8 +9,11 @@ const Cart = () => {
 
     return (
         <div>
-            <h1>Estos son los productos de tu carrito..</h1>
-            <CartList cart={cart} />
+            <div>
+                <h1>Estos son los productos de tu carrito..</h1>
+                <CartList cart={cart} />
+            </div>
+            <Link to='/checkout'>CheckOut</Link> 
         </div>
     )
 }

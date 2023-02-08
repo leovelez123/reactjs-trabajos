@@ -27,7 +27,7 @@ const ItemDetail = ({ id, nombre, categoria, precio, img, descripcion, stock }) 
             <p>Descripcion: {descripcion}</p>
             {
                 cantidad > 0 ? (
-                    <Link>Terminar Compra</Link>
+                    <Link to='/cart'>Terminar Compra</Link>
                 ) : ( <ItemCount stock= {stock} onAdd={handleOnAdd}/>)
             }
         </div>
