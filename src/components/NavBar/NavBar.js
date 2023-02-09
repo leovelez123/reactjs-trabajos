@@ -13,9 +13,9 @@ const NavBar = () => {
         <nav>
             <h1 className='titulo'>Vico diseño</h1>
             <div>
-                <Link to='/categoria/tazas' className='btn-opc'>Tazas</Link>
-                <Link to='/categoria/agendas' className='btn-opc'>Agendas</Link>
-                <Link to='/categoria/cuadros' className='btn-opc'>Cuadros</Link>
+                <Link to='/categoria/: tazas' className='btn-opc'>Tazas</Link>
+                <Link to='/categoria/:agendas' className='btn-opc'>Agendas</Link>
+                <Link to='/categoria/:cuadros' className='btn-opc'>Cuadros</Link>
             </div>
             <CartWidget cantidad={cantidadTotal} />
         </nav>

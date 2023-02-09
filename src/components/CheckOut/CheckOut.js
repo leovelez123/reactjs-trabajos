@@ -8,6 +8,9 @@ import { CartContext } from "../Context/CartContext"
 
 const CheckOut = () => {
     const [loading, setLoading] = useState(false)
+    const [nombre, setNombre ] = useState('')
+    const [telefono, setTelefono] = useState('')
+    const [mail, setMail] = useState('')
     const [orderId, setOrderId] = useState('')
     const { cart, total, clearCart } = useContext(CartContext)
 
@@ -19,9 +22,9 @@ const CheckOut = () => {
         try {
             const objOrder = {
                 buyer: {
-                    name: 'leo velez',
-                    telefono: '3546435142',
-                    mail: 'leo@hotmail.com',
+                    nombre,
+                    telefono,
+                    mail,
                 },
                 items: cart,
                 total
@@ -99,7 +102,16 @@ const CheckOut = () => {
     return (
         <div>
             <h1>CheckOut</h1>
+            <div>
+            <div>
+                <form>
+                    <input value={nombre} type='text' placeholder='Nombre' onChange={(event) => setNombre(event.target.value) } />
+                    <input value={telefono} type='text' placeholder='Telefono' onChange={(event) => setTelefono(event.target.value) } />
+                    <input value={mail} type='email' placeholder='Email' onChange={(event) => setMail(event.target.value) } />
+                </form>
+            </div>
             <button onClick={createOrder}>Generar Orden</button>
+        </div>
         </div>
     )
 }
